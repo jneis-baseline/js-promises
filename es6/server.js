@@ -52,3 +52,17 @@ Promise.all([p1, p3, p2])
 Promise.race([p1, p3, p2])
     .then(fullfilled)
     .catch(rejected);
+
+p1.then(function(res) {
+    console.log('1st promise fullfilled:', res);
+}).then(function(res) {
+    return 'value for next promise';
+}).then(function(res) {
+    console.log('value from previous promise:', res);
+    return p3; // if p2 is returned, next 'catch' does not run
+}).catch(function(err) {
+    console.error('previous promise rejected:', err);
+    return err;
+}).then(function(res) {
+    console.log('recovered from promised failed:', res);
+});
