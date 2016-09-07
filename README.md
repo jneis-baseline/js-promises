@@ -1,2 +1,2 @@
-# js-promises-hack
-sandbox for javascript promises
+# hack-js-promises
+hacking javascript promises by using existing solutions (es6, bluebird)
